@@ -1,0 +1,110 @@
+/* Fundo da página */
+.login-page {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #0a2a66, #051637);
+}
+
+/* Logo no canto superior esquerdo */
+.login-logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+}
+
+.login-logo img {
+  height: 3rem;
+  width: auto;
+}
+
+/* Card do login */
+.login-card {
+  background: white;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Título */
+.login-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Botão Google */
+.login-google {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem;
+  background: #e0eaff;
+  color: #1e40af;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.login-google:hover {
+  background: #c7d7ff;
+}
+
+/* Formulário */
+.login-form input {
+  width: 100%;
+  padding: .5rem;
+  border: 1px solid #d1d5db;
+  border-radius: .4rem;
+  font-size: .9rem;
+  margin-top: .2rem;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+}
+
+/* Botão login */
+.login-button {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  padding: .6rem;
+  border-radius: .4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.login-button:hover {
+  background: #1e3fa8;
+}
+
+/* Texto final */
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: .9rem;
+  color: #6b7280;
+}
+
+.login-footer a {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}

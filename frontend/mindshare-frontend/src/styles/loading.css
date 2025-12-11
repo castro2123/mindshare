@@ -1,0 +1,18 @@
+.loading-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+}
+
+.loading-logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: #333;
+}
