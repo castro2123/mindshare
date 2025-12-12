@@ -3,8 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import Profile from './components/profile';
-import Loading from './components/loading';
+import Profile from './components/Profile';
+import Loading from './components/Loading';
+import AdminPage from './pages/AdminPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -15,15 +18,18 @@ function App() {
       try {
         const res = await fetch('http://localhost:5000/api/auth/profile', {
           method: 'GET',
-          credentials: 'include'
+          credentials: 'include',
         });
 
         if (res.ok) {
           const data = await res.json();
           setUser(data);
+        } else {
+          setUser(null); // Garante que user será null se não estiver logado
         }
       } catch (err) {
         console.error(err);
+        setUser(null);
       } finally {
         setLoading(false);
       }
@@ -37,23 +43,38 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Rotas públicas */}
+        <Route
+          path="/login"
+          element={!user ? <LoginPage setUser={setUser} /> : <Navigate to="/" replace />}
+        />
+        <Route
+          path="/register"
+          element={!user ? <RegisterPage /> : <Navigate to="/" replace />}
+        />
 
-        {user ? (
-          // Se autenticado → qualquer rota leva ao Profile
-          <Route path="*" element={<Profile setUser={setUser} />} />
-        ) : (
-          <>
-            {/* Força sempre para o login ao abrir a app */}
-            <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Rota protegida principal */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute user={user}>
+              {user?.role === 'admin' ? <Navigate to="/admin" replace /> : <Profile setUser={setUser} />}
+            </ProtectedRoute>
+          }
+        />
 
-            <Route path="/login" element={<LoginPage setUser={setUser} />} />
-            <Route path="/register" element={<RegisterPage />} />
+        {/* Dashboard Admin */}
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute user={user}>
+              <AdminPage />
+            </AdminRoute>
+          }
+        />
 
-            {/* Qualquer rota desconhecida → login */}
-            <Route path="*" element={<Navigate to="/login" replace />} />
-          </>
-        )}
-
+        {/* Catch-all */}
+        <Route path="*" element={<Navigate to={user ? "/" : "/login"} replace />} />
       </Routes>
     </Router>
   );

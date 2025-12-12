@@ -1,12 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middlewares/authMiddleware'); // middleware JWT
-const userController = require('../controllers/user');
+const UserController = require('../controllers/user');
+const { authMiddleware, authorizeRoles } = require('../middlewares/authMiddleware');
 
-// Rotas de autenticação
-router.post('/register', userController.register);
-router.post('/login', userController.login);
-router.get('/profile', authMiddleware, userController.getProfile);
-router.post('/logout', userController.logout);
+// Registro student/admin
+router.post('/register', UserController.register);
+
+// Login
+router.post('/login', UserController.login);
+
+// Logout
+router.post('/logout', UserController.logout);
+
+// Perfil (autenticado)
+router.get('/profile', authMiddleware, UserController.getProfile);
 
 module.exports = router;

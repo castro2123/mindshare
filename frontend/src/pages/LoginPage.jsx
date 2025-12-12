@@ -1,6 +1,6 @@
 // src/pages/LoginPage.js
 import React from 'react';
-import Login from '../components/login';
+import Login from '../components/Login';
 import '../styles/login.css';
 
 function LoginPage({ setUser }) {

@@ -38,11 +38,15 @@ function Profile({ setUser }) {
       <h2>Perfil</h2>
       <p>Nome: {profile.name}</p>
       <p>Email: {profile.email}</p>
-      <p>Curso: {profile.course}</p>
-      <p>Função: {profile.role}</p>
+      <p>Curso: {profile.course?.name}</p>
+      <p>Função: {profile.role?.name || profile.role}</p>
       <button onClick={handleLogout}>Logout</button>
+
+      {/* Debug */}
+      {/* <pre>{JSON.stringify(profile, null, 2)}</pre> */}
     </div>
   );
+
 }
 
 export default Profile;
