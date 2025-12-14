@@ -1,6 +1,6 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import HomePage from "./pages/HomePage";
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Profile from './components/Profile';
@@ -43,6 +43,12 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Home pública */}
+        <Route 
+          path="/" 
+          element={<HomePage />}
+        />
+
         {/* Rotas públicas */}
         <Route
           path="/login"

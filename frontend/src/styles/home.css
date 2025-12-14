@@ -1,0 +1,72 @@
+.home {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #1b2b5f 0, #020617 50%, #000 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  background-color: #111827;
+}
+
+.home-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.home-logo img {
+  height: 32px;
+}
+
+.home-login-btn {
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: none;
+  background-color: #020617;
+  color: #f9fafb;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 0 16px;
+  padding: 80px 16px 0; 
+}
+
+.home-content h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.home-content p {
+  max-width: 640px;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.home-cta-btn {
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+  background-color: #f9fafb;
+  color: #020617;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
